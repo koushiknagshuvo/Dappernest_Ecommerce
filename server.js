@@ -7,7 +7,7 @@ import authRoutes from "./routes/authRoute.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 // import { fileURLToPath } from "url";
-import path from "path";
+// import path from "path";
 // Config env
 
 dotenv.config();
@@ -35,6 +35,7 @@ app.use("/api/v1/product", productRoutes);
 // app.use("*", function (req, res) {
 //   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 // });
+
 // app.get("/", (req, res) => {
 //   res.send({
 //     message: "Welcome to ecommerce-app",
@@ -44,7 +45,7 @@ app.use("/api/v1/product", productRoutes);
 const PORT = process.env.PORT;
 // run listion
 app.listen(PORT, () => {
-  console.log(
-    `Server is running on ${process.env.DEV_MODE} mode on port ${PORT}`
-  );
+    console.log(
+        `Server is running on ${process.env.DEV_MODE} mode on port ${PORT}`
+    );
 });

@@ -1,7 +1,6 @@
 import categoryModel from "../models/categoryModel.js";
 import orderModel from "../models/orderModel.js";
 import productModel from "../models/productModel.js";
-
 import braintree from "braintree";
 import dotenv from "dotenv";
 import fs from "fs";
@@ -376,3 +375,26 @@ export const brainTreePaymentController = async (req, res) => {
     console.log(error);
   }
 };
+
+// bKash_Payment
+
+// export const bKash_Payment = async (req, res) => {
+//   try {
+//     const { cart } = req.body;
+//     let total = 0;
+//     cart.map(i => {
+//       total += i.price;
+//     });
+
+//     const order = new orderModel({
+//       products: cart,
+//       TransactionId,
+//       BkashNumber,
+//       buyer: req.user._id,
+//     });
+//     await order.save();
+//     res.json({ ok: true });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
