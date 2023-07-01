@@ -1,20 +1,19 @@
 import express from "express";
 import formidable from "express-formidable";
 import {
-  brainTreePaymentController,
-  braintreeTokenController,
-  createProductController,
-  deleteProductController,
-  getProductController,
-  getSingleProductController,
-  productCategoryController,
-  productCountController,
-  productFiltersController,
-  productListController,
-  productPhotoController,
-  realtedProductController,
-  searchProductController,
-  updateProductController,
+    bKash_Payment,
+    createProductController,
+    deleteProductController,
+    getProductController,
+    getSingleProductController,
+    productCategoryController,
+    productCountController,
+    productFiltersController,
+    productListController,
+    productPhotoController,
+    realtedProductController,
+    searchProductController,
+    updateProductController,
 } from "../controllers/productController.js";
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
 
@@ -22,19 +21,19 @@ const router = express.Router();
 
 //routes POST Create Product Controller
 router.post(
-  "/create-product",
-  requireSignIn,
-  isAdmin,
-  formidable(),
-  createProductController
+    "/create-product",
+    requireSignIn,
+    isAdmin,
+    formidable(),
+    createProductController
 );
 //routes update Product Controller
 router.put(
-  "/update-product/:pid",
-  requireSignIn,
-  isAdmin,
-  formidable(),
-  updateProductController
+    "/update-product/:pid",
+    requireSignIn,
+    isAdmin,
+    formidable(),
+    updateProductController
 );
 
 //get all products
@@ -69,12 +68,12 @@ router.get("/product-category/:slug", productCategoryController);
 
 //payments routes
 //token
-router.get("/braintree/token", braintreeTokenController);
+// router.get("/braintree/token", braintreeTokenController);
 
 //payments
-router.post("/braintree/payment", requireSignIn, brainTreePaymentController);
+// router.post("/braintree/payment", requireSignIn, brainTreePaymentController);
 
 // bKash_Payment
-// router.post("/order/payment", requireSignIn, bKash_Payment);
+router.post("/order/payment", requireSignIn, bKash_Payment);
 
 export default router;

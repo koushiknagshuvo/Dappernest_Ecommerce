@@ -8,7 +8,15 @@ const orderSchema = new mongoose.Schema(
         ref: "Products",
       },
     ],
-    payment: {},
+    // payment: {},
+
+    TransactionId: {
+      type: String,
+    },
+    BkashNumber: {
+      type: String,
+    },
+
     buyer: {
       type: mongoose.ObjectId,
       ref: "users",
