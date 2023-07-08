@@ -1,6 +1,6 @@
-import express from "express";
-import formidable from "express-formidable";
-import {
+const express = require("express");
+const formidable = require("express-formidable");
+const {
   categoryControlller,
   categoryIconController,
   categoryPhotoController,
@@ -8,8 +8,8 @@ import {
   deleteCategoryCOntroller,
   singleCategoryController,
   updateCategoryController,
-} from "./../controllers/categoryController.js";
-import { isAdmin, requireSignIn } from "./../middlewares/authMiddleware.js";
+} = require("../controllers/categoryController.js");
+const { isAdmin, requireSignIn } = require("../middlewares/authMiddleware.js");
 
 const router = express.Router();
 
@@ -52,4 +52,4 @@ router.delete(
   deleteCategoryCOntroller
 );
 
-export default router;
+module.exports = router;

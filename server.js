@@ -1,11 +1,12 @@
-import cors from "cors";
-import dotenv from "dotenv";
-import express from "express";
-import morgan from "morgan";
-import connectDB from "./config/db.js";
-import authRoutes from "./routes/authRoute.js";
-import categoryRoutes from "./routes/categoryRoutes.js";
-import productRoutes from "./routes/productRoutes.js";
+const cors = require("cors");
+const dotenv = require("dotenv");
+const express = require("express");
+const morgan = require("morgan");
+const connectDB = require("./config/db.js");
+const authRoutes = require("./routes/authRoute.js");
+const categoryRoutes = require("./routes/categoryRoutes.js");
+const productRoutes = require("./routes/productRoutes.js");
+
 // import { fileURLToPath } from "url";
 // import path from "path";
 // Config env
@@ -36,16 +37,16 @@ app.use("/api/v1/product", productRoutes);
 //   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 // });
 
-// app.get("/", (req, res) => {
-//   res.send({
-//     message: "Welcome to ecommerce-app",
-//   });
-// });
+app.get("/", (req, res) => {
+  res.send({
+    message: "Welcome to ecommerce-app",
+  });
+});
 // PORT
 const PORT = process.env.PORT;
 // run listion
 app.listen(PORT, () => {
-    console.log(
-        `Server is running on ${process.env.DEV_MODE} mode on port ${PORT}`
-    );
+  console.log(
+    `Server is running on ${process.env.DEV_MODE} mode on port ${PORT}`
+  );
 });

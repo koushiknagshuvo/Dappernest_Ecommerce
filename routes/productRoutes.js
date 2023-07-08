@@ -1,39 +1,40 @@
-import express from "express";
-import formidable from "express-formidable";
-import {
-    bKash_Payment,
-    createProductController,
-    deleteProductController,
-    getProductController,
-    getSingleProductController,
-    productCategoryController,
-    productCountController,
-    productFiltersController,
-    productListController,
-    productPhotoController,
-    realtedProductController,
-    searchProductController,
-    updateProductController,
-} from "../controllers/productController.js";
-import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
+const express = require("express");
+const formidable = require("express-formidable");
+const {
+  bKash_Payment,
+  createProductController,
+  deleteProductController,
+  getProductController,
+  getSingleProductController,
+  productCategoryController,
+  productCountController,
+  productFiltersController,
+  productListController,
+  productPhotoController,
+  realtedProductController,
+  searchProductController,
+  updateProductController,
+  CashOnDelevary_Payment,
+} = require("../controllers/productController.js");
+const { isAdmin, requireSignIn } = require("../middlewares/authMiddleware.js");
 
 const router = express.Router();
 
 //routes POST Create Product Controller
 router.post(
-    "/create-product",
-    requireSignIn,
-    isAdmin,
-    formidable(),
-    createProductController
+  "/create-product",
+  requireSignIn,
+  isAdmin,
+  formidable(),
+  createProductController
 );
 //routes update Product Controller
 router.put(
-    "/update-product/:pid",
-    requireSignIn,
-    isAdmin,
-    formidable(),
-    updateProductController
+  "/update-product/:pid",
+  requireSignIn,
+  isAdmin,
+  formidable(),
+  updateProductController
 );
 
 //get all products
@@ -75,5 +76,6 @@ router.get("/product-category/:slug", productCategoryController);
 
 // bKash_Payment
 router.post("/order/payment", requireSignIn, bKash_Payment);
+router.post("/order/Cashpayment", requireSignIn, CashOnDelevary_Payment);
 
-export default router;
+module.exports = router;

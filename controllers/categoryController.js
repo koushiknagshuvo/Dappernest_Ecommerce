@@ -1,9 +1,9 @@
-import slugify from "slugify";
-import categoryModel from "../models/categoryModel.js";
-import fs from "fs";
+const slugify = require("slugify");
+const categoryModel = require("../models/categoryModel.js");
+const fs = require("fs");
 
 // Create Category Controller
-export const createCategoryController = async (req, res) => {
+const createCategoryController = async (req, res) => {
   try {
     const { name } = req.fields;
     const { photo } = req.files;
@@ -63,7 +63,7 @@ export const createCategoryController = async (req, res) => {
 };
 
 // Update category
-export const updateCategoryController = async (req, res) => {
+const updateCategoryController = async (req, res) => {
   try {
     const { name } = req.fields;
     const { photo } = req.files;
@@ -102,7 +102,7 @@ export const updateCategoryController = async (req, res) => {
 };
 
 // get all category
-export const categoryControlller = async (req, res) => {
+const categoryControlller = async (req, res) => {
   try {
     const category = await categoryModel
       .find({})
@@ -126,7 +126,7 @@ export const categoryControlller = async (req, res) => {
 };
 
 // get single category
-export const singleCategoryController = async (req, res) => {
+const singleCategoryController = async (req, res) => {
   try {
     const category = await categoryModel
       .findOne({ slug: req.params.slug })
@@ -147,7 +147,7 @@ export const singleCategoryController = async (req, res) => {
 };
 
 // Delete category full category will deleted
-export const deleteCategoryCOntroller = async (req, res) => {
+const deleteCategoryCOntroller = async (req, res) => {
   try {
     const { id } = req.params;
     await categoryModel.findByIdAndDelete(id).select("-photo -icon");
@@ -167,7 +167,7 @@ export const deleteCategoryCOntroller = async (req, res) => {
 
 // Category Photo Controller GET Methode
 
-export const categoryPhotoController = async (req, res) => {
+const categoryPhotoController = async (req, res) => {
   try {
     const category = await categoryModel
       .findById(req.params.pid)
@@ -187,7 +187,7 @@ export const categoryPhotoController = async (req, res) => {
 };
 // Category Icon Controller GET Methode
 
-export const categoryIconController = async (req, res) => {
+const categoryIconController = async (req, res) => {
   try {
     const category = await categoryModel
       .findById(req.params.pid)
@@ -204,4 +204,15 @@ export const categoryIconController = async (req, res) => {
       error,
     });
   }
+};
+
+module.exports = {
+  createCategoryController,
+  updateCategoryController,
+  categoryControlller,
+  singleCategoryController,
+  deleteCategoryCOntroller,
+  categoryPhotoController,
+  categoryPhotoController,
+  categoryIconController,
 };

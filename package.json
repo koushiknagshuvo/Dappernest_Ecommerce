@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "ecommerce-app backend Made by koushk Nag Shuvo",
     "main": "server.js",
-    "type": "module",
+ 
     "scripts": {
         "start": "nodemon server.js"
     },
